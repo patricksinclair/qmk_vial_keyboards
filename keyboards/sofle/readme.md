@@ -16,6 +16,9 @@ More details about the keyboard and build guides can be found here: [Sofle Keybo
 - [`keyboards/sofle_choc`](../sofle_choc/) is used for Choc PCBs
 
 # My updates
+
+NOTE: There's some weird git thing where if the repo you run the flashing command in isn't a direct clone, then it fails.  May be an error on my part, but low effort fix is to just have a clean clone that you copy this `sofle/rev1` directory into.
+
 ## Code changes
 
 The following was added to `config.h`:
