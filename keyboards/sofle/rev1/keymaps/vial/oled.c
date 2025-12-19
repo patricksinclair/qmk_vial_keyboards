@@ -97,7 +97,9 @@ static void print_status_slave(void) {
             oled_write_ln_P(PSTR("Undef"), false);
             break;
     }
+
     oled_write_P(PSTR("\n\n"), false);
+    oled_write_ln_P(PSTR("LAYER"), false);
     switch (get_highest_layer(layer_state)) {
         case 0:
         case 1:
@@ -113,7 +115,6 @@ static void print_status_slave(void) {
             oled_write_ln_P(PSTR("Undef"), false);
     }
 
-    oled_write_ln_P(PSTR("LAYER"), false);
 #ifdef WPM_ENABLE
     // Display WPM (throttled update)
     static uint32_t wpm_timer = 0;

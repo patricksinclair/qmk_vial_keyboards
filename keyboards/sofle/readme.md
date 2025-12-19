@@ -15,6 +15,36 @@ More details about the keyboard and build guides can be found here: [Sofle Keybo
 - `sofle/keyhive` is used for PCBs purchased from [Keyhive](https://keyhive.xyz/shop/sofle)
 - [`keyboards/sofle_choc`](../sofle_choc/) is used for Choc PCBs
 
+# My updates
+## Code changes
+
+The following was added to `config.h`:
+
+    #define EE_HANDS
+    #define SPLIT_OLED_ENABLE
+    #define SPLIT_LAYER_STATE_ENABLE
+    #define SPLIT_WPM_ENABLE
+
+This allows for the second OLED screen to receive info from the master side, for things like layers, wpm calcs and turning off the display if the computer goes to sleep.  The `EE_HANDS` combined with the handedness flag in the Flashing section allow for either side to be plugged in and the keys will be mapped as expected.
+
+The following was added to `rules.mk`:
+
+    WPM_ENABLE = yes
+    SPLIT_WPM_ENABLE = yes
+
+Which are required for the wpm calculations.
+
+## Flashing
+
+To compile and flash this firmware, run 
+
+    qmk flash -kb sofle/rev1 -km vial -e CONVERT_TO=rp2040_ce -bl uf2-split-left
+
+Press reset button on the keyboard when asked.  Currently this is done by double-tapping the physical reset 
+
+Disconnect the first half, connect the second one and repeat the process.
+
+
 Make example for this keyboard (after setting up your build environment):
 
     make sofle/rev1:default
